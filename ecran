@@ -1,0 +1,18 @@
+#!/bin/env python2
+
+import argparse
+import subprocess
+
+args = argparse.ArgumentParser()
+args.add_argument('--off', action='store_true')
+args = args.parse_args()
+
+cmd = ['xrandr', '--output', 'DP2']
+
+if args.off:
+    cmd += ['--off']
+else:
+    cmd += ['--left-of', 'eDP1', '--auto']
+
+subprocess.check_call(cmd)
+    
